@@ -1,0 +1,24 @@
+name: Upload Artifact Workflow
+
+on:
+  push:
+    branches:
+      - bbbbbb
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Create sample file
+      run: echo "Hello, this is a sample artifact!" > sample.txt
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: sample-artifact
+        path: sample.txt
+        retention-days: 7
